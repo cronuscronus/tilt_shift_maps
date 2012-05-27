@@ -1,0 +1,7 @@
+This mash-up uses the Pixastic library, the Bing maps API, and jQuery to create a tilt shift blur when viewing images in birds-eye mode.
+
+In order to use this system, you will need to obtain a Bing maps API key here: http://msdn.microsoft.com/en-us/library/ff428642.aspx and set the value in index.html to "maps_key".
+
+Thanks to Pixastic (http://www.pixastic.com/) for writing an awesome image processing library in JavaScript, and to Bing for loading their tiles as actual JPEG's so they're easy to fetch!
+
+If you have no idea what Tilt-Shift photography is, look here: http://en.wikipedia.org/wiki/Tilt%E2%80%93shift_photography

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+
+      <title>Map with birds eye view</title>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+	  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	  <script type="text/javascript" src="pixastic.custom.js"></script>
+	  <script type="text/javascript" src="bing_lib.js"></script>
+	  <script type="text/javascript" src="tilt_control.js"></script>
+	  
+      <script type="text/javascript">
+		  var map = null;
+		  var maps_key = 'CHANGE ME';
+		  
+		  var start_lat = 32.8810;
+		  var start_lon = -117.2380;
+		  var start_zoom = 18;
+		  
+		  var map_element = 'myMap';
+
+		  var system_width = '1280';
+		  var system_height = '1024';
+		  
+		  $("#myMap").css("width", system_width);
+		  $("#myMap").css("height", system_width);
+		  
+		  $(document).ready( function() {
+		  
+		   getMap();
+		   
+		   $("#button_tilt").click( function() {
+			applyTiltEffect();
+		   });
+		   
+		   $("#locQuery").keypress(function(e) {
+			if (e.keyCode == 13) {
+				findLocation();
+			}
+		   })
+		  });
+      </script>
+
+   </head>
+
+   <body>
+    <div>
+	<div id="output"></div>
+		<input type="text" id="locQuery" />
+        <input type="button" value="FindLocation" onclick="findLocation();" />
+    </div>
+
+	<div><button id="button_tilt">Tilt Shift!</button></div>
+	<div id='myMap' style="position:relative;"></div>
+   </body>
+</html>
