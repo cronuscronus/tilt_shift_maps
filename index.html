@@ -12,6 +12,16 @@
 	  <script type="text/javascript" src="bing_lib.js"></script>
 	  <script type="text/javascript" src="tilt_control.js"></script>
 	  
+	  
+	  <style type="text/css">
+		.body { background: black; }
+		.container { padding-bottom: 50px; margin-left: auto; margin-right: auto; width: 1250px; background: white; }
+		.map { margin-left: auto; margin-right: auto; }
+		h2, p, button, input { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+		.header { width: 1024px; margin: 0 auto 0 auto; padding: 20px 0 20px 0; }
+		.buttons { float: left; }
+	  </style>
+	  
       <script type="text/javascript">
 		  var map = null;
 		  var maps_key = 'CHANGE ME';
@@ -22,13 +32,23 @@
 		  
 		  var map_element = 'myMap';
 
-		  var system_width = '1280';
-		  var system_height = '1024';
+		  var system_width = '1024';
+		  var system_height = '768';
+		  
+		  var blur_amount = 1.5;
 		  
 		  $("#myMap").css("width", system_width);
 		  $("#myMap").css("height", system_width);
 		  
 		  $(document).ready( function() {
+		  $("body").addClass("body");
+		  $("#myMap").addClass("map");
+		  $("#myMap").css("width", system_width);
+		  
+		  $("#locQuery").val('UCSD, CA');
+		  $("#locQuery").click(function () {
+			$("#locQuery").val('');
+			});
 		  
 		   getMap();
 		   
@@ -47,13 +67,21 @@
    </head>
 
    <body>
-    <div>
-	<div id="output"></div>
-		<input type="text" id="locQuery" />
-        <input type="button" value="FindLocation" onclick="findLocation();" />
-    </div>
-
-	<div><button id="button_tilt">Tilt Shift!</button></div>
-	<div id='myMap' style="position:relative;"></div>
+    <div class="container">
+		<div class="header">
+			<h2>Tilt Shift Illusion Generator</h2>
+			<p>To use this tool, simply type in a desired location, zoom in until you are in Birds Eye view, and click the "Apply Tilt" button.</p>
+			<p>To apply more blur, click the button multiple times. It may be necessary to re-center your image and re-apply the blur for desired results.</p>
+			
+			<div class="buttons">
+				<input type="text" id="locQuery" />
+				<input type="button" id="button_find" value="Perform Search" onclick="findLocation();" />
+			</div>
+			<div><button id="button_tilt">Apply Tilt</button></div>
+		</div>
+		
+		<div id='myMap'></div>
+	
+	</div>
    </body>
 </html>

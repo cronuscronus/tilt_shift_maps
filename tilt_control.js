@@ -12,7 +12,7 @@ function applyTiltEffect() {
 				bottom_row = ( (tiles_wide*tiles_heigh) - tiles_wide);
 					
 				if (intIndex < tiles_wide || intIndex >= bottom_row ) {
-				$(this).pixastic("blurfast", {amount:0.95});
+				$(this).pixastic("blurfast", {amount: blur_amount});
 				}
 			}
 		);
